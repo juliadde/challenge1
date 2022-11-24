@@ -1,4 +1,4 @@
-package br.com.projetochallange.agencia.entidades;
+package br.com.projetochallange.agencia.requisicao;
 
 import lombok.Data;
 
@@ -10,7 +10,8 @@ import javax.persistence.Table;
 @Table(name = "produto")
 @Data
 
-public class Produto {
+public class ProdutoRequest {
+
     @Id
     String nome;
     String sistema;

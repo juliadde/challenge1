@@ -1,6 +1,5 @@
 package br.com.projetochallange.agencia.servico;
 
-import br.com.projetochallange.agencia.resposta.RespostaInconsistencia;
 import br.com.projetochallange.agencia.resposta.RespostaTratativa;
 import org.springframework.stereotype.Service;
 

@@ -1,17 +1,16 @@
 package br.com.projetochallange.agencia.controllers;
 
 import br.com.projetochallange.agencia.requisicao.TratativaRequest;
-import br.com.projetochallange.agencia.resposta.RespostaInconsistencia;
 import br.com.projetochallange.agencia.resposta.RespostaTratativa;
 import br.com.projetochallange.agencia.servico.CadastrarTratativa;
 import br.com.projetochallange.agencia.servico.ConsultarTratativa;
-import br.com.projetochallange.agencia.servico.ListarInconsistencia;
+import br.com.projetochallange.agencia.servico.ListarTratativa;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 
 import java.util.List;
 
@@ -19,13 +18,13 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/tratativa")
 @Slf4j
-@EnableSwagger2
+
 
 public class TratativaController {
     @Autowired
     private final CadastrarTratativa cadastrarTratativa;
     private final ConsultarTratativa consultarTratativa;
-    private final ListarInconsistencia listarInconsistencia;
+    private final ListarTratativa listarTratativa;
 
     @PostMapping(path = "", produces = "aplication/json")
     @ResponseStatus(HttpStatus.CREATED)
@@ -41,8 +40,8 @@ public class TratativaController {
     }
 
     @GetMapping(path = "")
-    public List<RespostaInconsistencia> listarInconsistencia() {
-        return listarInconsistencia.executar();
+    public List<RespostaTratativa> listarTratativa() {
+        return listarTratativa.executar();
     }
 
     @DeleteMapping(path = "/{identificador}")
