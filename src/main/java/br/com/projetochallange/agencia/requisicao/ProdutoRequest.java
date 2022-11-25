@@ -2,9 +2,7 @@ package br.com.projetochallange.agencia.requisicao;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "produto")
@@ -13,6 +11,8 @@ import javax.persistence.Table;
 public class ProdutoRequest {
 
     @Id
-    String nome;
-    String sistema;
+    private String nome;
+    @OneToOne
+    @JoinColumn(name = "id_sistema")
+    private SistemaRequest sistemaRequest;
 }

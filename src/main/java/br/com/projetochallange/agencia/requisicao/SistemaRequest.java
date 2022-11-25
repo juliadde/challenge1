@@ -11,8 +11,8 @@ import javax.persistence.*;
 public class SistemaRequest {
     @Id
     private String nome;
-    @ManyToOne
-    @JoinColumn(name = "departamento_request_nome")
+    @OneToOne
+    @JoinColumn(name = "id_departamento")
     private DepartamentoRequest departamentoRequest;
     private String funcaoSistema;
 }

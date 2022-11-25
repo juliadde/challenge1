@@ -10,8 +10,8 @@ import javax.persistence.*;
 public class InconsistenciaRequest {
     @Id
     private String mensagemErro;
-    @ManyToOne
-    @JoinColumn(name = "sistema_request_nome")
+    @OneToOne
+    @JoinColumn(name = "id_sistema")
     private SistemaRequest sistemaRequest;
     private String etapa;
 
