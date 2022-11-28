@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 public class RespostaProduto extends ProdutoRequest {
-    private String identificador;
+    private String codigoProduto;
 
 }

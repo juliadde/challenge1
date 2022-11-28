@@ -2,9 +2,7 @@ package br.com.projetochallange.agencia.controllers;
 
 import br.com.projetochallange.agencia.requisicao.InconsistenciaRequest;
 import br.com.projetochallange.agencia.resposta.RespostaInconsistencia;
-import br.com.projetochallange.agencia.servico.CadastrarInconsistencia;
-import br.com.projetochallange.agencia.servico.ConsultarInconsistencia;
-import br.com.projetochallange.agencia.servico.ListarInconsistencia;
+import br.com.projetochallange.agencia.servico.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +23,8 @@ public class InconsistenciaController {
     private final CadastrarInconsistencia cadastrarInconsistencia;
     private final ConsultarInconsistencia consultarInconsistencia;
     private final ListarInconsistencia listarInconsistencia;
+    private final RemoverInconsistencia removerInconsistencia;
+    private final AlterarInconsistencia alterarInconsistencia;
 
     @PostMapping(path = "", produces = "aplication/json")
     @ResponseStatus(HttpStatus.CREATED)
@@ -33,9 +33,9 @@ public class InconsistenciaController {
         return cadastrarInconsistencia.executar(inconsistenciaRequest);
     }
 
-    @GetMapping(path = "/{identificador}")
-    public RespostaInconsistencia consultarInconsistencia(@PathVariable("identificador") String identificador) {
-        return consultarInconsistencia.executar(identificador);
+    @GetMapping(path = "/{codigoInconsistencia}")
+    public RespostaInconsistencia consultarInconsistencia(@PathVariable("codigoInconsistencia") String codigoInconsistencia) {
+        return consultarInconsistencia.executar(codigoInconsistencia);
     }
 
     @GetMapping(path = "")
@@ -44,15 +44,15 @@ public class InconsistenciaController {
         return listarInconsistencia.executar();
     }
 
-    @DeleteMapping(path = "/{identificador}")
-    public RespostaInconsistencia removerInconsistencia(@PathVariable("identificador") String identificador) {
-        return new RespostaInconsistencia();
+    @DeleteMapping(path = "/{codigoInconsistencia}")
+    public RespostaInconsistencia removerInconsistencia(@PathVariable("codigoInconsistencia") String codigoInconsistencia) {
+        return removerInconsistencia.executar(codigoInconsistencia);
     }
 
-    @PatchMapping(path = "/{identificador}")
+    @PatchMapping(path = "/{codigoInconsistencia}")
     public RespostaInconsistencia alterarInconsistencia(@RequestBody InconsistenciaRequest inconsistenciaRequest,
-                                                        @PathVariable("identificador") String identificador) {
-        return new RespostaInconsistencia();
+                                                        @PathVariable("codigoInconsistencia") String codigoInconsistencia) {
+        return alterarInconsistencia.executar(inconsistenciaRequest, codigoInconsistencia);
     }
 }
 

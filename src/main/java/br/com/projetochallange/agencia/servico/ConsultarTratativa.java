@@ -8,7 +8,7 @@ import java.util.UUID;
 public class ConsultarTratativa {
     public RespostaTratativa executar(String identificador) {
         RespostaTratativa respostaTratativa = new RespostaTratativa();
-        respostaTratativa.setIdentificador(UUID.randomUUID().toString());
+        respostaTratativa.setCodigoTratativa(UUID.randomUUID().toString());
         return respostaTratativa;
     }
 }

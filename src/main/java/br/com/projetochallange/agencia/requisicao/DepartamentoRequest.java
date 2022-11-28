@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 public class DepartamentoRequest {
     @Id
-    String nome;
-    int juncaoDepartamento;
+    private String nome;
+    private String codigoDepartamento;
 
 }

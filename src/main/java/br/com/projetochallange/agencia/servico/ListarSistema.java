@@ -13,7 +13,7 @@ public class ListarSistema {
         List<RespostaSistema> respostaSistemas = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
             RespostaSistema respostaSistema = new RespostaSistema();
-            respostaSistema.setIdentificador(UUID.randomUUID().toString());
+            respostaSistema.setCodigoSistema(UUID.randomUUID().toString());
             respostaSistemas.add(respostaSistema);
         }
         return respostaSistemas;

@@ -15,4 +15,5 @@ public class ProdutoRequest {
     @OneToOne
     @JoinColumn(name = "id_sistema")
     private SistemaRequest sistemaRequest;
+    private String codigoProduto;
 }

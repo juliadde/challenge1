@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 public class RespostaTratativa extends TratativaRequest {
-    private String identificador;
+    private String codigoTratativa;
 }
 

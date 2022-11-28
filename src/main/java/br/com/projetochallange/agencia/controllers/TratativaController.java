@@ -2,9 +2,7 @@ package br.com.projetochallange.agencia.controllers;
 
 import br.com.projetochallange.agencia.requisicao.TratativaRequest;
 import br.com.projetochallange.agencia.resposta.RespostaTratativa;
-import br.com.projetochallange.agencia.servico.CadastrarTratativa;
-import br.com.projetochallange.agencia.servico.ConsultarTratativa;
-import br.com.projetochallange.agencia.servico.ListarTratativa;
+import br.com.projetochallange.agencia.servico.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +23,8 @@ public class TratativaController {
     private final CadastrarTratativa cadastrarTratativa;
     private final ConsultarTratativa consultarTratativa;
     private final ListarTratativa listarTratativa;
+    private final RemoverTratativa removerTratativa;
+    private final AlterarTratativa alterarTratativa;
 
     @PostMapping(path = "", produces = "aplication/json")
     @ResponseStatus(HttpStatus.CREATED)
@@ -33,9 +33,9 @@ public class TratativaController {
         return cadastrarTratativa.executar(tratativaRequest);
     }
 
-    @GetMapping(path = "/{identificador}")
-    public RespostaTratativa consultarTratativa(@PathVariable("identificador") String identificador) {
-        return consultarTratativa.executar(identificador);
+    @GetMapping(path = "/{codigoTratativa}")
+    public RespostaTratativa consultarTratativa(@PathVariable("codigoTratativa") String codigoTratativa) {
+        return consultarTratativa.executar(codigoTratativa);
 
     }
 
@@ -44,15 +44,15 @@ public class TratativaController {
         return listarTratativa.executar();
     }
 
-    @DeleteMapping(path = "/{identificador}")
-    public RespostaTratativa removerTratativa(@PathVariable("identificador") String identificador) {
-        return new RespostaTratativa();
+    @DeleteMapping(path = "/{codigoTratativa}")
+    public RespostaTratativa removerTratativa(@PathVariable("codigoTratativa") String codigoTratativa) {
+        return removerTratativa.executar(codigoTratativa);
     }
 
-    @PatchMapping(path = "/{identificador}")
+    @PatchMapping(path = "/{codigoTratativa}")
     public RespostaTratativa alterarTratativa(@RequestBody TratativaRequest tratativaRequest,
-                                              @PathVariable("identificador") String identificador) {
-        return new RespostaTratativa();
+                                              @PathVariable("codigoTratativa") String codigoTratativa) {
+        return alterarTratativa.executar(tratativaRequest, codigoTratativa);
     }
 }
 

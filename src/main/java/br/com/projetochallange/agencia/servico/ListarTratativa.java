@@ -13,7 +13,7 @@ public class ListarTratativa {
         List<RespostaTratativa> respostaTratativas = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
             RespostaTratativa respostaTratativa = new RespostaTratativa();
-            respostaTratativa.setIdentificador(UUID.randomUUID().toString());
+            respostaTratativa.setCodigoTratativa(UUID.randomUUID().toString());
             respostaTratativas.add(respostaTratativa);
         }
         return respostaTratativas;

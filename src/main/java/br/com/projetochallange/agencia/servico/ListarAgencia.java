@@ -1,21 +1,22 @@
 package br.com.projetochallange.agencia.servico;
 
+import br.com.projetochallange.agencia.conversores.ConverteAgenciaRequestParaRespostaAgencia;
+import lombok.RequiredArgsConstructor;
+import br.com.projetochallange.agencia.persistencia.AgenciaRepository;
 import br.com.projetochallange.agencia.resposta.RespostaAgencia;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class ListarAgencia {
+    private final AgenciaRepository agenciaRepository;
+
     public List<RespostaAgencia> executar() {
-        List<RespostaAgencia> respostaAgencias = new ArrayList<>();
-        for (int i = 1; i <= 10; i++) {
-            RespostaAgencia respostaAgencia = new RespostaAgencia();
-            respostaAgencia.setIdentificador(UUID.randomUUID().toString());
-            respostaAgencias.add(respostaAgencia);
-        }
-        return respostaAgencias;
+        return agenciaRepository.findAll().stream()
+                .map(ConverteAgenciaRequestParaRespostaAgencia::converte).collect(Collectors.toList());
     }
-}
+
+    }

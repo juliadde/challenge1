@@ -9,7 +9,7 @@ import java.util.UUID;
 public class ConsultarSistema {
     public RespostaSistema executar(String identificador) {
         RespostaSistema respostaSistema = new RespostaSistema();
-        respostaSistema.setIdentificador(UUID.randomUUID().toString());
+        respostaSistema.setCodigoSistema(UUID.randomUUID().toString());
         return respostaSistema;
     }
 }

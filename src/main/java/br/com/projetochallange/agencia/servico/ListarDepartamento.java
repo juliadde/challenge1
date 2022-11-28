@@ -14,7 +14,7 @@ public class ListarDepartamento {
         List<RespostaDepartamento> respostaDepartamentos = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
             RespostaDepartamento respostaDepartamento = new RespostaDepartamento();
-            respostaDepartamento.setIdentificador(UUID.randomUUID().toString());
+            respostaDepartamento.setCodigoDepartamento(UUID.randomUUID().toString());
             respostaDepartamentos.add(respostaDepartamento);
         }
         return respostaDepartamentos;

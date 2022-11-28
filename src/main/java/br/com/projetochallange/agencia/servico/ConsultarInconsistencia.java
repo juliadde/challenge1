@@ -9,7 +9,7 @@ import java.util.UUID;
 public class ConsultarInconsistencia {
     public RespostaInconsistencia executar(String identificador) {
         RespostaInconsistencia respostaInconsistencia = new RespostaInconsistencia();
-        respostaInconsistencia.setIdentificador(UUID.randomUUID().toString());
+        respostaInconsistencia.setCodigoInconsistencia(UUID.randomUUID().toString());
         return respostaInconsistencia;
     }
 

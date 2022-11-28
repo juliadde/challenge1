@@ -5,5 +5,5 @@ import lombok.Data;
 
 @Data
 public class RespostaDepartamento extends DepartamentoRequest {
-    private String identificador;
+    private String codigoDepartamento;
 }

@@ -2,9 +2,7 @@ package br.com.projetochallange.agencia.requisicao;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "agencia")
@@ -14,8 +12,7 @@ public class AgenciaRequest {
 
         @Id
         private String codigoAgencia;
-        private String nome;
-        private String cidade;
+        private String nomeFuncionario;
     }
 
 

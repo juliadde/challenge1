@@ -1,9 +1,7 @@
 package br.com.projetochallange.agencia.controllers;
 import br.com.projetochallange.agencia.requisicao.ProdutoRequest;
 import br.com.projetochallange.agencia.resposta.RespostaProduto;
-import br.com.projetochallange.agencia.servico.CadastrarProduto;
-import br.com.projetochallange.agencia.servico.ConsultarProduto;
-import br.com.projetochallange.agencia.servico.ListarProduto;
+import br.com.projetochallange.agencia.servico.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +20,8 @@ public class ProdutoController {
     private final CadastrarProduto cadastrarProduto;
     private final ConsultarProduto consultarProduto;
     private final ListarProduto listarProduto;
+    private final RemoverProduto removerProduto;
+    private final AlterarProduto alterarProduto;
 
     @PostMapping(path = "", produces = "aplication/json")
     @ResponseStatus(HttpStatus.CREATED)
@@ -30,9 +30,9 @@ public class ProdutoController {
         return cadastrarProduto.executar(produtoRequest);
     }
 
-    @GetMapping(path = "/{identificador}")
-    public RespostaProduto consultarProduto(@PathVariable("identificador") String identificador) {
-        return consultarProduto.executar(identificador);
+    @GetMapping(path = "/{codigoProduto}")
+    public RespostaProduto consultarProduto(@PathVariable("codigoProduto") String codigoProduto) {
+        return consultarProduto.executar(codigoProduto);
     }
 
     @GetMapping(path = "")
@@ -41,15 +41,15 @@ public class ProdutoController {
         return listarProduto.executar();
     }
 
-    @DeleteMapping(path = "/{identificador}")
-    public RespostaProduto removerProduto(@PathVariable("identificador") String identificador) {
-        return new RespostaProduto();
+    @DeleteMapping(path = "/{codigoProduto}")
+    public RespostaProduto removerProduto(@PathVariable("codigoProduto") String codigoProduto) {
+        return removerProduto.executar(codigoProduto);
     }
 
-    @PatchMapping(path = "/{identificador}")
+    @PatchMapping(path = "/{codigoProduto}")
     public RespostaProduto alterarProduto(@RequestBody ProdutoRequest produtoRequest,
-                                                        @PathVariable("identificador") String identificador) {
-        return new RespostaProduto();
+                                                        @PathVariable("codigoProduto") String codigoProduto) {
+        return alterarProduto.executar(produtoRequest, codigoProduto);
     }
 }
 

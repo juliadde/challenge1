@@ -13,7 +13,7 @@ public class ListarInconsistencia {
         List<RespostaInconsistencia> respostaInconsistencias = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
             RespostaInconsistencia respostaInconsistencia = new RespostaInconsistencia();
-            respostaInconsistencia.setIdentificador(UUID.randomUUID().toString());
+            respostaInconsistencia.setCodigoInconsistencia(UUID.randomUUID().toString());
             respostaInconsistencias.add(respostaInconsistencia);
         }
         return respostaInconsistencias;

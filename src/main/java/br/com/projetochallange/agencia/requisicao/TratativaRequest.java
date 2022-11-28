@@ -17,6 +17,7 @@ public class TratativaRequest {
     @OneToOne
     @JoinColumn(name = "id_departamento")
     private DepartamentoRequest departamentoRequest;
+    private String codigoTratativa;
 
 
 }

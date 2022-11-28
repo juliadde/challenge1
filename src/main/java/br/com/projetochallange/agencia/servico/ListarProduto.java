@@ -13,7 +13,7 @@ public class ListarProduto {
         List<RespostaProduto> respostaProdutos = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
             RespostaProduto respostaProduto = new RespostaProduto();
-            respostaProduto.setIdentificador(UUID.randomUUID().toString());
+            respostaProduto.setCodigoProduto(UUID.randomUUID().toString());
             respostaProdutos.add(respostaProduto);
         }
         return respostaProdutos;

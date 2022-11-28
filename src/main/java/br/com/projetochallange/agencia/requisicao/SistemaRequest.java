@@ -15,4 +15,5 @@ public class SistemaRequest {
     @JoinColumn(name = "id_departamento")
     private DepartamentoRequest departamentoRequest;
     private String funcaoSistema;
+    private String codigoSistema;
 }

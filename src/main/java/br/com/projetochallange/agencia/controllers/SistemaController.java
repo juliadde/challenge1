@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/inconsistencia")
+@RequestMapping("/sistema")
 @Slf4j
 
 public class SistemaController {
@@ -23,6 +23,8 @@ public class SistemaController {
     private final CadastrarSistema cadastrarSistema;
     private final ConsultarSistema consultarSistema;
     private final ListarSistema listarSistema;
+    private final RemoverSistema removerSistema;
+    private final AlterarSistema alterarSistema;
 
     @PostMapping(path = "", produces = "aplication/json")
     @ResponseStatus(HttpStatus.CREATED)
@@ -31,9 +33,9 @@ public class SistemaController {
         return cadastrarSistema.executar(sistemaRequest);
     }
 
-    @GetMapping(path = "/{identificador}")
-    public RespostaSistema consultarsistema(@PathVariable("identificador") String identificador) {
-        return consultarSistema.executar(identificador);
+    @GetMapping(path = "/{codigoSistema}")
+    public RespostaSistema consultarsistema(@PathVariable("codigoSistema") String codigoSistema) {
+        return consultarSistema.executar(codigoSistema);
     }
 
     @GetMapping(path = "")
@@ -42,14 +44,13 @@ public class SistemaController {
         return listarSistema.executar();
     }
 
-    @DeleteMapping(path = "/{identificador}")
-    public RespostaSistema removerSistema(@PathVariable("identificador") String identificador) {
-        return new RespostaSistema();
-    }
+    @DeleteMapping(path = "/{codigoSistema}")
+    public RespostaSistema removerSistema(@PathVariable("codigoSistema") String codigoSistema) {
+        return removerSistema.executar(codigoSistema);    }
 
-    @PatchMapping(path = "/{identificador}")
+    @PatchMapping(path = "/{codigoSistema}")
     public RespostaSistema alterarSistema(@RequestBody SistemaRequest sistemaRequest,
-                                                        @PathVariable("identificador") String identificador) {
-        return new RespostaSistema();
+                                                        @PathVariable("codigoSistema") String codigoSistema) {
+        return alterarSistema.executar(sistemaRequest, codigoSistema);
     }
 }

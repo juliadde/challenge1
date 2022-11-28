@@ -2,9 +2,7 @@ package br.com.projetochallange.agencia.controllers;
 
 import br.com.projetochallange.agencia.requisicao.AgenciaRequest;
 import br.com.projetochallange.agencia.resposta.RespostaAgencia;
-import br.com.projetochallange.agencia.servico.CadastrarAgencia;
-import br.com.projetochallange.agencia.servico.ConsultarAgencia;
-import br.com.projetochallange.agencia.servico.ListarAgencia;
+import br.com.projetochallange.agencia.servico.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +21,8 @@ public class AgenciaController {
     private final CadastrarAgencia cadastrarAgencia;
     private final ConsultarAgencia consultarAgencia;
     private final ListarAgencia listarAgencia;
+    private final RemoverAgencia removerAgencia;
+    private final AlterarAgencia alterarAgencia;
 
     @PostMapping(path = "", produces = "aplication/json")
     @ResponseStatus(HttpStatus.CREATED)
@@ -31,9 +31,9 @@ public class AgenciaController {
         return cadastrarAgencia.executar(agenciaRequest);
     }
 
-    @GetMapping(path = "/{identificador}")
-    public RespostaAgencia consultarAgencia(@PathVariable("identificador") String identificador) {
-        return consultarAgencia.executar(identificador);
+    @GetMapping(path = "/{codigoAgencia}")
+    public RespostaAgencia consultarAgencia(@PathVariable("codigoAgencia") String codigoAgencia) {
+        return consultarAgencia.executar(codigoAgencia);
     }
 
     @GetMapping(path = "")
@@ -42,15 +42,15 @@ public class AgenciaController {
         return listarAgencia.executar();
     }
 
-    @DeleteMapping(path = "/{identificador}")
-    public RespostaAgencia removeragencia(@PathVariable("identificador") String identificador) {
-        return new RespostaAgencia();
+    @DeleteMapping(path = "/{condigoAgencia}")
+    public RespostaAgencia removerAgencia(@PathVariable("codigoAgencia") String codigoAgencia) {
+        return removerAgencia.executar(codigoAgencia);
     }
 
-    @PatchMapping(path = "/{identificador}")
+    @PatchMapping(path = "/{codigoAgencia}")
     public RespostaAgencia alterarAgencia(@RequestBody AgenciaRequest agenciaRequest,
-                                                        @PathVariable("identificador") String identificador) {
-        return new RespostaAgencia();
+                                                        @PathVariable("codigoAgencia") String codigoAgencia) {
+        return alterarAgencia.executar(agenciaRequest, codigoAgencia);
     }
 }
 

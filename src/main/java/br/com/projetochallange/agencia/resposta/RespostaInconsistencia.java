@@ -5,5 +5,5 @@ import lombok.Data;
 
 @Data
 public class RespostaInconsistencia extends InconsistenciaRequest {
-    private String identificador;
+    private String codigoInconsistencia;
 }

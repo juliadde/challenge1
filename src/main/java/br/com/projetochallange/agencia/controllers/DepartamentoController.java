@@ -23,7 +23,8 @@ public class DepartamentoController {
     private final CadastrarDepartamento cadastrarDepartamento;
     private final ConsultarDepartamento consultarDepartamento;
     private final ListarDepartamento listarDepartamento;
-
+    private final RemoverDepartamento removerDepartamento;
+    private final AlterarDepartamento alterarDepartamento;
     @PostMapping(path = "", produces = "aplication/json")
     @ResponseStatus(HttpStatus.CREATED)
     public RespostaDepartamento respostaDepartamento(@RequestBody DepartamentoRequest departamentoRequest) {
@@ -31,9 +32,10 @@ public class DepartamentoController {
         return cadastrarDepartamento.executar(departamentoRequest);
     }
 
-    @GetMapping(path = "/{identificador}")
-    public RespostaDepartamento consultarDepartamento(@PathVariable("identificador") String identificador) {
-        return consultarDepartamento.executar(identificador);
+    @GetMapping(path = "/{codigoDepartamento}")
+    public RespostaDepartamento consultarDepartamento(@PathVariable("codigoDepartamento")
+                                                          String codigoDepartamento) {
+        return consultarDepartamento.executar(codigoDepartamento);
     }
 
     @GetMapping(path = "")
@@ -42,16 +44,17 @@ public class DepartamentoController {
         return listarDepartamento.executar();
     }
 
-    @DeleteMapping(path = "/{identificador}")
-    public RespostaDepartamento removerDepartamento(@PathVariable("identificador") String identificador) {
-        return new RespostaDepartamento();
+    @DeleteMapping(path = "/{codigoDepartamento}")
+    public RespostaDepartamento removerDepartamento(@PathVariable("codigoDepartamento")
+                                                        String codigoDepartamento) {
+        return removerDepartamento.executar(codigoDepartamento);
     }
 
-    @PatchMapping(path = "/{identificador}")
+    @PatchMapping(path = "/{codigoDepartamento}")
     public RespostaDepartamento alterarDepartamento(@RequestBody DepartamentoRequest departamentoRequest,
-                                                        @PathVariable("identificador") String identificador) {
-        return new RespostaDepartamento();
-    }
+                                                        @PathVariable("codigoDepartamento")
+                                                        String codigoDepartamento) {
+        return alterarDepartamento.executar(departamentoRequest, codigoDepartamento);    }
 }
 
 

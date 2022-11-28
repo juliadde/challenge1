@@ -9,7 +9,7 @@ import java.util.UUID;
 public class ConsultarProduto {
     public RespostaProduto executar(String identificador) {
         RespostaProduto respostaProduto = new RespostaProduto();
-        respostaProduto.setIdentificador(UUID.randomUUID().toString());
+        respostaProduto.setCodigoProduto(UUID.randomUUID().toString());
         return respostaProduto;
     }
 }

@@ -1,19 +1,29 @@
 package br.com.projetochallange.agencia.servico;
+
+import br.com.projetochallange.agencia.persistencia.AgenciaRepository;
 import br.com.projetochallange.agencia.requisicao.AgenciaRequest;
-import br.com.projetochallange.agencia.requisicao.DepartamentoRequest;
 import br.com.projetochallange.agencia.resposta.RespostaAgencia;
-import br.com.projetochallange.agencia.resposta.RespostaDepartamento;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
+
 public class CadastrarAgencia {
+    private final AgenciaRepository agenciaRepository;
     public RespostaAgencia executar(AgenciaRequest agenciaRequest) {
         RespostaAgencia respostaAgencia = new RespostaAgencia();
-        respostaAgencia.setIdentificador(UUID.randomUUID().toString());
+        respostaAgencia.setCodigoAgencia(UUID.randomUUID().toString());
+
+        AgenciaRequest agenciaRequest1 = new AgenciaRequest();
+        agenciaRequest1.setNomeFuncionario(agenciaRequest1.getNomeFuncionario());
+        agenciaRequest1.setCodigoAgencia(agenciaRequest1.getCodigoAgencia());
+        agenciaRepository.save(agenciaRequest1);
+
         respostaAgencia.setCodigoAgencia(agenciaRequest.getCodigoAgencia());
-        respostaAgencia.setNome(agenciaRequest.getNome());
-        respostaAgencia.setCidade(agenciaRequest.getCidade());
+        respostaAgencia.setNomeFuncionario(agenciaRequest.getNomeFuncionario());
         return respostaAgencia;
-}}
+    }
+}
